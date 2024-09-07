@@ -1,5 +1,11 @@
-function App() {
-  return <div className="App">Recruitment task</div>;
-}
+import UsersComponent from './components/UsersComponent';
+
+const App = () => {
+  return (
+    <div className="App">
+      <UsersComponent />
+    </div>
+  );
+};
 
 export default App;

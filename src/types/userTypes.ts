@@ -6,3 +6,7 @@ export interface User {
   email: string;
   phone: string;
 }
+
+export interface UsersState {
+  users: User[];
+}
