@@ -18,7 +18,12 @@ const StyledUser = styled.tr`
 `;
 
 const StyledCell = styled.td`
+  width: 220px;
   padding: 10px;
+
+  &:hover {
+    background-color: #575b63;
+  }
 `;
 
 const StyledNameCell = styled(StyledCell)`
