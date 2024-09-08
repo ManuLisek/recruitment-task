@@ -4,9 +4,10 @@ import styled from 'styled-components';
 const StyledApp = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   height: 100%;
+  margin-top: 50px;
 `;
 
 const App = () => {
