@@ -17,7 +17,7 @@ export default {
             key: user.id,
             id: user.id,
             name: user.name,
-            userName: user.username,
+            username: user.username,
             email: user.email,
             phone: user.phone,
           }));
