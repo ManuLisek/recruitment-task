@@ -14,4 +14,6 @@ export interface UsersState {
   users: User[];
   filters: UserColumns;
   filteredUsers: User[];
+  loading: boolean;
+  error: string | null;
 }

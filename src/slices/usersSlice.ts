@@ -11,6 +11,8 @@ const initialState: UsersState = {
     phone: '',
   },
   filteredUsers: [],
+  loading: false,
+  error: null,
 };
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
@@ -42,9 +44,20 @@ const usersSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchUsers.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+
     builder.addCase(fetchUsers.fulfilled, (state, action) => {
       state.users = action.payload;
       state.filteredUsers = action.payload;
+      state.loading = false;
+    });
+
+    builder.addCase(fetchUsers.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message || 'Something went wrong';
     });
   },
 });
