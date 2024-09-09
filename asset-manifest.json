@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/recruitment-task/static/css/main.f6df8138.css",
+    "main.js": "/recruitment-task/static/js/main.82f4aa7c.js",
+    "index.html": "/recruitment-task/index.html",
+    "main.f6df8138.css.map": "/recruitment-task/static/css/main.f6df8138.css.map",
+    "main.82f4aa7c.js.map": "/recruitment-task/static/js/main.82f4aa7c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f6df8138.css",
+    "static/js/main.82f4aa7c.js"
+  ]
+}
