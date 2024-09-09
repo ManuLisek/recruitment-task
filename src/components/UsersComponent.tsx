@@ -7,6 +7,7 @@ import { UserColumns } from '../types/userTypes';
 import UserRowComponent from './UserRowComponent';
 import InputComponent from './InputComponent';
 import NoUserComponent from './NoUserComponent';
+import NoticeComponent from './NoticeComponent';
 
 const StyledTableWrapper = styled.div`
   width: 900px;
@@ -67,9 +68,30 @@ const StyledLink = styled.a`
 const UsersComponent = () => {
   const dispatch: AppDispatch = useDispatch();
 
-  const { filteredUsers, filters } = useSelector(
+  const { filteredUsers, filters, loading, error } = useSelector(
     (state: RootState) => state.users,
   );
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
+  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(
+      setFilter({
+        key: event.target.name as keyof UserColumns,
+        value: event.target.value,
+      }),
+    );
+  };
+
+  if (loading) {
+    return <NoticeComponent>Loading users...</NoticeComponent>;
+  }
+
+  if (error) {
+    return <NoticeComponent>Something went wrong...</NoticeComponent>;
+  }
 
   const filteredUsersList =
     filteredUsers.length > 0 ? (
@@ -86,19 +108,6 @@ const UsersComponent = () => {
     ) : (
       <NoUserComponent />
     );
-
-  useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
-
-  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(
-      setFilter({
-        key: event.target.name as keyof UserColumns,
-        value: event.target.value,
-      }),
-    );
-  };
 
   return (
     <>
@@ -153,7 +162,10 @@ const UsersComponent = () => {
       </StyledTableWrapper>
       <StyledAuthor>
         Created by{' '}
-        <StyledLink href="https://github.com/ManuLisek" target="_blank">
+        <StyledLink
+          href="https://github.com/ManuLisek/recruitment-task"
+          target="_blank"
+        >
           Michał Lisowiec
         </StyledLink>
       </StyledAuthor>
