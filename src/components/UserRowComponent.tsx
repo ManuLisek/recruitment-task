@@ -1,9 +1,8 @@
 import { User } from '../types/userTypes';
 import styled from 'styled-components';
+import CellComponent from './CellComponent';
 
 const StyledUser = styled.tr`
-  margin-top: 5px;
-
   &:nth-child(odd) {
     background-color: #323c50;
   }
@@ -17,26 +16,25 @@ const StyledUser = styled.tr`
   }
 `;
 
-const StyledCell = styled.td`
-  width: 220px;
-  padding: 10px;
-
-  &:hover {
-    background-color: #575b63;
-  }
-`;
-
-const StyledNameCell = styled(StyledCell)`
+const StyledNameCell = styled(CellComponent)`
   color: #fb667a;
+
+  @media (min-width: 440px) and (max-width: 890px) {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background-color: inherit;
+    border-right: 1px solid #1f2739;
+  }
 `;
 
 const UserRowComponent = ({ id, name, username, email, phone }: User) => {
   return (
     <StyledUser key={id}>
       <StyledNameCell>{name}</StyledNameCell>
-      <StyledCell>{username}</StyledCell>
-      <StyledCell>{email}</StyledCell>
-      <StyledCell>{phone}</StyledCell>
+      <CellComponent>{username}</CellComponent>
+      <CellComponent>{email}</CellComponent>
+      <CellComponent>{phone}</CellComponent>
     </StyledUser>
   );
 };

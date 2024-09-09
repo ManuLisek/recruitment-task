@@ -1,18 +1,22 @@
 import UsersComponent from './components/UsersComponent';
 import styled from 'styled-components';
 
+const StyledHeader = styled.h1`
+  margin-top: 50px;
+`;
+
 const StyledApp = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-  height: 100%;
-  margin-top: 50px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
 `;
 
 const App = () => {
   return (
     <StyledApp>
+      <StyledHeader>Users list</StyledHeader>
       <UsersComponent />
     </StyledApp>
   );
